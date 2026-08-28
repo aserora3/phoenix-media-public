@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>広告掲載ポータル</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <div class="brand">広告掲載ポータル</div>
+      <nav><a href="#media">媒体</a><a href="#plans">料金</a><a href="#apply">申込</a><a href="#flow">掲載まで</a></nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="eyebrow">DIGITAL SIGNAGE ADVERTISING</p>
+          <h1>広告掲載を、申込みから入稿まで<br>オンラインでシンプルに。</h1>
+          <p class="lead">媒体選択・申込み・銀行振込・MP4入稿・審査状況確認まで、ひとつの画面で進められる広告主向けポータルです。</p>
+          <div class="actions"><a class="btn primary" href="#apply">広告掲載を申し込む</a><a class="btn secondary" href="#flow">流れを見る</a></div>
+        </div>
+        <div class="status-card">
+          <div class="status-title">掲載開始の条件</div>
+          <ul>
+            <li>入金確認済み</li>
+            <li>MP4入稿済み</li>
+            <li>広告審査承認済み</li>
+            <li>必要な施設承認済み</li>
+          </ul>
+          <p class="note">すべて完了後に広告再生が開始されます。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="media" class="section">
+      <div class="wrap">
+        <p class="eyebrow">MEDIA</p><h2>広告媒体</h2>
+        <div class="cards two">
+          <article class="card"><h3>媒体を選択</h3><p>設置場所ごとに広告仕様・審査条件・禁止業種を個別設定できる設計です。</p><div class="tag">将来追加可能</div></article>
+          <article class="card"><h3>施設ごとの審査</h3><p>媒体ごとに異なる掲載基準を管理画面から変更できます。</p><div class="tag">柔軟設定</div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="plans" class="section alt">
+      <div class="wrap">
+        <p class="eyebrow">PLANS</p><h2>料金プラン</h2>
+        <p class="muted">料金は管理画面から後で自由に変更できます。現在は金額未設定です。</p>
+        <div id="planGrid" class="cards plans"></div>
+      </div>
+    </section>
+
+    <section id="apply" class="section">
+      <div class="wrap narrow">
+        <p class="eyebrow">APPLICATION</p><h2>広告掲載申込み</h2>
+        <form id="applicationForm" class="form-card">
+          <div class="grid2">
+            <label>会社名<input required name="companyName" /></label>
+            <label>担当者名<input required name="contactName" /></label>
+            <label>会社住所<input required name="companyAddress" /></label>
+            <label>代表電話番号<input required name="companyPhone" inputmode="tel" /></label>
+            <label>担当者電話番号<input required name="contactPhone" inputmode="tel" /></label>
+            <label>メールアドレス<input required type="email" name="email" /></label>
+          </div>
+          <div class="grid2">
+            <label>希望媒体<select required name="media"><option value="">選択してください</option><option>栄サイネージ</option><option>その他媒体</option></select></label>
+            <label>希望プラン<select required name="plan" id="planSelect"></select></label>
+            <label>支払方法<select required name="paymentType"><option>一括払い</option><option>月払い（対象プランのみ）</option></select></label>
+            <label>希望掲載開始日<input type="date" name="startDate" /></label>
+          </div>
+          <label>広告内容<textarea required name="adContent" rows="5" placeholder="広告する商品・サービス内容をご入力ください"></textarea></label>
+          <label class="check"><input type="checkbox" name="agencyReferral" /> 広告代理店・紹介者を通して申し込む</label>
+          <div id="agencyFields" class="grid2 hidden">
+            <label>代理店・紹介者名<input name="agencyName" /></label>
+            <label>紹介コード<input name="referralCode" /></label>
+          </div>
+          <label class="check"><input required type="checkbox" /> 利用規約・広告掲載条件・審査条件を確認しました</label>
+          <button class="btn primary full" type="submit">申込み内容を確認する</button>
+        </form>
+        <div id="applicationResult" class="result hidden"></div>
+      </div>
+    </section>
+
+    <section id="flow" class="section alt">
+      <div class="wrap">
+        <p class="eyebrow">FLOW</p><h2>掲載開始まで</h2>
+        <div class="steps">
+          <div><span>1</span><b>申込み</b><p>会社情報・媒体・プランを入力</p></div>
+          <div><span>2</span><b>銀行振込</b><p>振込名義に案件番号を追加</p></div>
+          <div><span>3</span><b>MP4入稿</b><p>広告素材をアップロード</p></div>
+          <div><span>4</span><b>審査</b><p>当社・必要に応じ施設側で確認</p></div>
+          <div><span>5</span><b>掲載開始</b><p>入金＋審査完了後に再生開始</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap narrow notice">
+        <h2>銀行振込について</h2>
+        <p>申込み後に案件管理番号を発行します。お振込みの際は、振込名義の末尾に案件管理番号をご入力ください。番号がない場合でも会社名・金額等から確認可能な場合は有効な入金として扱います。</p>
+        <p>長期契約の月払いでは、原則毎月20日前後に翌月分の支払案内をメール送信し、当月25日までに入金が確認できない場合は翌月の広告再生を停止する場合があります。</p>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="wrap">© 広告掲載ポータル</div></footer>
+  <script src="./app.js"></script>
+</body>
+</html>

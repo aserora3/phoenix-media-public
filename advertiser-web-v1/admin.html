@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ja">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>広告管理ダッシュボード</title><link rel="stylesheet" href="./styles.css"></head>
+<body>
+<header class="site-header"><div class="wrap header-inner"><div class="brand">広告管理ダッシュボード</div><nav><a href="./index.html">公開サイト</a><a href="./portal.html">広告主画面</a></nav></div></header>
+<main class="section"><div class="wrap">
+<p class="eyebrow">ADMIN</p><h2>案件管理</h2>
+<div class="cards plans">
+<article class="card"><h3>入金待ち</h3><div class="plan-price" id="waitingCount">1</div><p>銀行アプリ確認後に手動で入金確認済みへ変更</p></article>
+<article class="card"><h3>審査待ち</h3><div class="plan-price" id="reviewCount">0</div><p>MP4入稿後、社内・施設審査</p></article>
+<article class="card"><h3>掲載可能</h3><div class="plan-price" id="playableCount">0</div><p>入金＋入稿＋審査をすべて通過</p></article>
+</div>
+<section class="section"><div class="form-card">
+<h3>デモ案件 AD-DEMO-0001</h3><div class="grid2">
+<label>会社名<input value="サンプル株式会社" readonly></label>
+<label>プラン<input value="3ヶ月 / 月払い" readonly></label>
+<label>入金状態<select id="payment"><option value="WAITING">入金待ち</option><option value="CONFIRMED">入金確認済み</option><option value="OVERDUE">期限超過</option></select></label>
+<label>MP4入稿<select id="submission"><option value="WAITING">未入稿</option><option value="ACCEPTED">入稿済み</option></select></label>
+<label>社内審査<select id="internalReview"><option value="WAITING">審査待ち</option><option value="APPROVED">承認</option><option value="REJECTED">修正依頼</option></select></label>
+<label>施設審査<select id="venueReview"><option value="WAITING">審査待ち</option><option value="APPROVED">承認</option><option value="NOT_REQUIRED">不要</option><option value="REJECTED">掲載不可</option></select></label>
+</div>
+<div id="gateResult" class="result"><b>掲載開始不可</b><p class="note">必要条件をすべて満たすと「掲載可能」になります。</p></div>
+</div></section>
+<section class="section alt"><div class="notice"><h3>月払い管理</h3><p>毎月20日前後：翌月分の支払案内メール予定</p><p>当月25日：未入金なら翌月再生を停止予定へ変更</p><p>入金確認後：他条件を満たせば掲載可能へ復帰</p></div></section>
+<section class="section"><div class="notice"><h3>不可抗力返金計算</h3><div class="grid2"><label>停止時間<input id="stopHours" type="number" min="0" value="0"></label><label>当月料金<input id="monthlyFee" type="number" min="0" value="0"></label><label>当月日数<input id="daysInMonth" type="number" min="28" max="31" value="30"></label></div><button class="btn secondary" id="calcRefund">計算する</button><div id="refundResult" class="result hidden"></div></div></section>
+</div></main>
+<script src="./admin.js"></script></body></html>

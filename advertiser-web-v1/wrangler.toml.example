@@ -1,0 +1,15 @@
+name = "advertiser-web-v1"
+main = "worker.js"
+compatibility_date = "2026-08-29"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "advertiser-web-v1"
+database_id = "REPLACE_WITH_D1_DATABASE_ID"
+
+[[r2_buckets]]
+binding = "UPLOADS"
+bucket_name = "advertiser-web-v1-uploads"
+
+[triggers]
+crons = ["0 0 20 * *", "0 0 25 * *"]
