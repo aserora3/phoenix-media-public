@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AI WORK OS 無料体験版</title>
+<meta name="description" content="中小企業向けAI業務効率化システム AI WORK OS の5分無料体験版" />
+<style>
+:root{--bg:#f5f7fb;--card:#fff;--text:#172033;--muted:#6b7280;--line:#e5e7eb;--brand:#111827;--accent:#2563eb;--ok:#ecfdf5}*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP",sans-serif;color:var(--text)}.wrap{max-width:820px;margin:0 auto;padding:18px}.hero{padding:22px 4px 14px}.badge{display:inline-block;background:#e8eefc;color:#1d4ed8;border-radius:999px;padding:6px 10px;font-size:12px;font-weight:700}.hero h1{font-size:26px;margin:10px 0 6px}.hero p{color:var(--muted);line-height:1.7;margin:0}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 8px 30px rgba(15,23,42,.06);overflow:hidden}.top{padding:16px 18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;align-items:center}.top strong{font-size:15px}.status{font-size:12px;color:#047857;background:var(--ok);padding:6px 9px;border-radius:999px}.chat{height:470px;overflow:auto;padding:18px;background:linear-gradient(#fff,#fbfcff)}.msg{max-width:88%;margin:0 0 12px;padding:11px 13px;border-radius:14px;line-height:1.7;white-space:pre-wrap;font-size:14px}.bot{background:#f1f5f9;border-bottom-left-radius:5px}.user{background:#111827;color:#fff;margin-left:auto;border-bottom-right-radius:5px}.chips{display:flex;gap:8px;flex-wrap:wrap;padding:12px 16px;border-top:1px solid var(--line);background:#fff}.chips button{border:1px solid #dbe2ea;background:#fff;border-radius:999px;padding:9px 12px;font-size:13px;cursor:pointer}.chips button:hover{background:#f8fafc}.input{display:flex;gap:8px;padding:14px 16px 16px;background:#fff}.input input{flex:1;border:1px solid #dbe2ea;border-radius:12px;padding:12px;font-size:15px;outline:none}.input button{border:0;border-radius:12px;background:var(--accent);color:#fff;padding:0 18px;font-weight:700;cursor:pointer}.foot{font-size:12px;color:var(--muted);line-height:1.7;padding:14px 4px 28px}.cta{margin-top:16px;background:#111827;color:#fff;border-radius:16px;padding:18px}.cta h2{font-size:18px;margin:0 0 6px}.cta p{font-size:13px;color:#d1d5db;margin:0;line-height:1.7}@media(max-width:600px){.wrap{padding:12px}.hero h1{font-size:22px}.chat{height:430px}.msg{max-width:94%}.top{align-items:flex-start;flex-direction:column}.input button{padding:0 14px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<section class="hero">
+<span class="badge">5分で体験・登録不要</span>
+<h1>AI WORK OS 無料体験版</h1>
+<p>実際の会社データは使いません。サンプル会社を使って「普通に話しかけるだけで仕事が整理される」操作感をお試しください。</p>
+</section>
+<div class="card">
+<div class="top"><strong>サンプル設備工業株式会社｜業務アシスタント</strong><span class="status">サンプルデータのみ</span></div>
+<div id="chat" class="chat"></div>
+<div class="chips">
+<button data-q="今日やることは？">今日やることは？</button>
+<button data-q="未対応ある？">未対応ある？</button>
+<button data-q="返信作って">返信作って</button>
+<button data-q="見積見せて">見積見せて</button>
+<button data-q="未入金ある？">未入金ある？</button>
+<button data-q="今の状況まとめて">今の状況まとめて</button>
+</div>
+<div class="input"><input id="q" placeholder="例：今日やることは？" autocomplete="off"/><button id="send">送信</button></div>
+</div>
+<div class="cta"><h2>本番版では、御社の実データにつなげます</h2><p>Gmail、Google Drive、案件管理、見積、請求・入金などを御社の業務フローに合わせて接続・構築します。無料体験版では実データへの接続や自動送信は行いません。</p></div>
+<div class="foot">AI WORK OS 無料体験版｜提供：7コロビ8オキ<br>※ 炉・設備設計、図面判断、燃焼計算、安全計算などの専門技術判断はAIに任せない設計です。</div>
+</div>
+<script>
+const chat=document.getElementById('chat'), q=document.getElementById('q');
+function add(text,who='bot'){const d=document.createElement('div');d.className='msg '+who;d.textContent=text;chat.appendChild(d);chat.scrollTop=chat.scrollHeight}
+const intro=`AI WORK OS 無料体験版です。\n\n実際の会社データは使用しない安全なサンプルデモです。\n\n「今日やることは？」「未対応ある？」「返信作って」「見積見せて」「未入金ある？」など、そのまま話しかけてください。\n\nまず「今日やることは？」を試してみてください。`;
+add(intro);
+function answer(s){const t=s.trim(); if(!t)return;
+ if(/今日|やること|タスク/.test(t))return `今日の優先事項は3つです。\n\n1. 山田商事株式会社へ、空調設備更新の現地確認日程について返信\n2. CASE-DEMO-001の見積条件を確認\n3. 期限超過している110,000円の未入金を確認\n\n最優先は「山田商事株式会社への返信」です。返信案も作れます。`;
+ if(/未対応|問い合わせ/.test(t)&&!/返信/.test(t))return `未対応は1件です。\n\n顧客：山田商事株式会社／山田様\n内容：店舗の空調設備更新について、現地確認と概算見積を相談したい\n希望：来週中に打ち合わせ\n\n次のアクション：現地確認候補日の確認と返信案作成。`;
+ if(/返信/.test(t))return `返信案を作成しました。\n\n山田商事株式会社\n山田様\n\nお問い合わせありがとうございます。\n店舗の空調設備更新について、現地確認および概算見積のご相談を承りました。\n\n来週中のお打ち合わせをご希望とのことですので、社内で日程を確認のうえ改めて候補日をご連絡いたします。\n\nどうぞよろしくお願いいたします。\n\n※ 日程・価格など未確定事項は確約していません。送信前に担当者確認が必要です。`;
+ if(/案件化/.test(t))return `案件として整理しました。\n\n案件ID：CASE-DEMO-001\n顧客：山田商事株式会社\n案件：店舗空調設備更新\n状態：見積条件確認中\n\n次のアクション\n・現地確認日程の調整\n・必要条件の確認\n・見積作成`;
+ if(/見積/.test(t))return `見積下書きは1件です。\n\n見積ID：Q-DEMO-001\n商品：デモ設備部品\n数量：2\n単価：50,000円\n税抜：100,000円\n消費税：10,000円\n税込：110,000円\n状態：下書き\n\n登録済みの金額だけを表示しています。`;
+ if(/未入金|入金|期限/.test(t))return `未入金は1件、合計110,000円です。\n\n請求ID：INV-DEMO-001\n金額：110,000円\n支払期限：2026年8月31日\n状態：未入金・期限超過\n\n優先対応：入金状況の確認。`;
+ if(/状況|まとめ|全体/.test(t))return `現在の状況です。\n\n未対応問い合わせ：1件\n見積下書き：1件（110,000円）\n未入金：1件（110,000円）\n期限超過：1件\n受注案件：0件\n\n最優先：山田商事株式会社への返信 → 見積条件確認 → 未入金確認。`;
+ return `この無料体験版では、次の操作を試せます。\n\n・今日やることは？\n・未対応ある？\n・返信作って\n・この問い合わせを案件化して\n・見積見せて\n・未入金ある？\n・今の状況まとめて\n\n本番版では御社のGmail・Drive・案件・見積・請求データ等と接続して同じ操作を行います。`;
+}
+function send(v){const s=(v??q.value).trim();if(!s)return;add(s,'user');q.value='';setTimeout(()=>add(answer(s)),180)}
+document.getElementById('send').onclick=()=>send();q.addEventListener('keydown',e=>{if(e.key==='Enter')send()});document.querySelectorAll('[data-q]').forEach(b=>b.onclick=()=>send(b.dataset.q));
+</script>
+</body>
+</html>
