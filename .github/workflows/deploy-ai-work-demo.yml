@@ -1,10 +1,12 @@
-name: Deploy AI WORK Demo
+name: Deploy Public Site
 
 on:
   push:
     branches: [main]
     paths:
       - 'ai-work-demo/**'
+      - 'advertiser-web-v1/**'
+      - 'index.html'
       - '.github/workflows/deploy-ai-work-demo.yml'
   workflow_dispatch:
 
@@ -30,10 +32,10 @@ jobs:
         uses: actions/configure-pages@v5
         with:
           enablement: true
-      - name: Upload demo
+      - name: Upload site
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./ai-work-demo
+          path: .
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
